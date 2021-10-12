@@ -44,7 +44,7 @@ client.connect(err => {
     });
     // Find appointments. For doctor all the appointments will be visible. For patients only his/her information will be available.
     app.post('/appointmentsByDate', (req, res) => {
-        const date = req.body;
+        const date = req.body.date;
         const email = req.body.email;
         doctorCollection.find({ email: email })
             .toArray((err, doctors) => {
