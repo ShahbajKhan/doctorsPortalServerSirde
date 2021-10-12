@@ -48,13 +48,13 @@ client.connect(err => {
         const email = req.body.email;
         doctorCollection.find({ email: email })
             .toArray((err, doctors) => {
-                const filter = { date: date.date }
+                const filter = { date: date }
                 if (doctors.length === 0) {
                     filter.email = email;
                 }
                 appointmentCollection.find(filter)
                     .toArray((err, documents) => {
-                        console.log(email, date.date, doctors, documents)
+                        console.log(documents)
                         res.send(documents);
                     })
             })
